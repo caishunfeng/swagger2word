@@ -402,7 +402,14 @@ public abstract class AbsSwaggerDataParser implements SwaggerDataParser {
                     request.setRequire((Boolean) param.get("required"));
                 }
                 // 参数说明
-                request.setRemark(String.valueOf(param.get("description")));
+                StringBuilder remark = new StringBuilder("");
+                if (param.get("description") != null) {
+                    remark.append(param.get("description"));
+                }
+               if (param.get("example") != null) {
+                    remark.append("，示例：" + param.get("example"));
+               }
+                request.setRemark(remark.toString());
                 requestList.add(request);
             }
         }

@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.word.utils.PropertiesUtils;
+
 /**
  * 返回属性
  *
@@ -52,7 +54,11 @@ public class ModelAttr implements Serializable {
 	}
 
 	public void setDescription(String description) {
-		this.description = description;
+		if (description != null) {
+			this.description = PropertiesUtils.getString(description, description);
+		} else {
+			this.description = description;
+		}
 	}
 
 	public List<ModelAttr> getProperties() {
@@ -106,4 +112,9 @@ public class ModelAttr implements Serializable {
      * 是否加载完成，避免循环引用
      */
     private boolean isCompleted = false;
+
+	/**
+	 * example
+	 */
+	private String example;
 }

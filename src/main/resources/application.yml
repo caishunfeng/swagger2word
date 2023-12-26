@@ -23,7 +23,7 @@ spring:
       max-request-size: 50MB
 # Swagger json url address
 # etc. https://petstore.swagger.io/
-swagger.url: https://petstore.swagger.io/v2/swagger.json
+swagger.url: http://localhost:12345/dolphinscheduler/v3/api-docs
 
 
 

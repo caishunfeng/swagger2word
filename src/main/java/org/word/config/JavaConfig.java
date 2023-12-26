@@ -31,6 +31,7 @@ public class JavaConfig {
                 .build();
         SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
         CloseableHttpClient httpClient = HttpClients.custom()
+                .addInterceptorFirst(new CustomRequestInterceptor())
                 .setSSLSocketFactory(csf)
                 .build();
         HttpComponentsClientHttpRequestFactory requestFactory =
